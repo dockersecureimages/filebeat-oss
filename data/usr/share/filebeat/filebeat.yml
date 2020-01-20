@@ -1,0 +1,102 @@
+name: ${HOSTNAME}
+
+path.config: /usr/share/filebeat
+
+filebeat.modules:
+
+filebeat.inputs:
+#- type: log
+#  enabled: false
+#  paths:
+#    - /var/lib/docker/containers/*/*.log
+
+- type: container
+  paths:
+    - '/var/lib/docker/containers/*/*.log'
+#  json.keys_under_root: true
+#  json.add_error_key: true
+#  json.message_key: log
+#  json.ignore_errors: true
+#  json.ignore_decoding_error: true
+#  encoding: utf8
+  multiline.pattern: '^\s'
+  multiline.match: after
+#
+processors:
+#- add_docker_metadata:
+#    host: "unix:///var/run/docker.sock"
+- decode_json_fields:
+    fields: ["message"]
+    target: "json"
+    overwrite_keys: true
+
+#- type: docker
+#  enabled: true
+#  containers.ids: '*'
+#  json.keys_under_root: true
+#  json.add_error_key: true
+#  json.message_key: message
+#  multiline.pattern: '^\s'
+#  multiline.match: after
+#  json.ignore_errors: true
+#  json.ignore_decoding_error: true
+
+#- type: log
+#  paths:
+#   - '/var/lib/docker/containers/*/*.log'
+#  json.keys_under_root: true
+#  json.add_error_key: true
+#  json.message_key: log
+#  multiline.pattern: '^\s'
+#  multiline.match: after
+#  json.ignore_errors: true
+#  json.ignore_decoding_error: true
+#  processors:
+#  - add_docker_metadata: ~
+#  - decode_json_fields:
+#      fields: ["log"]
+
+
+#- type: docker
+#  paths:
+#   - '/var/lib/docker/containers/*/*.log'
+#  containers.ids: '*'
+#  processors:
+#    - decode_json_fields:
+#        fields: ["message"]
+#        target: ""
+#        overwrite_keys: true
+#    - add_docker_metadata: ~
+
+#    #- add_docker_metadata:
+#    #    host: "unix:///var/run/docker.sock"
+
+filebeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: false
+
+output.elasticsearch:
+  hosts: ["${ELASTIC_HOST}"]
+  index: "${ELASTIC_INDEX}-%{+yyyy.MM.dd}"
+
+setup.kibana:
+  host: "${KIBANA_HOST}"
+
+setup.template.enabled: true
+setup.template.name: "${ELASTIC_INDEX}"
+setup.template.pattern: "${ELASTIC_INDEX}-*"
+setup.template.fields: "${path.config}/fields.yml"
+setup.template.overwrite: true
+setup.template.settings:
+  index:
+    number_of_shards: 1
+    codec: best_compression
+
+logging.to_files: false
+logging.files:
+
+setup.dashboards.enabled: false
+setup.dashboards.directory: ${path.config}/kibana
+setup.dashboards.always_kibana: false
+#setup.dashboards.index: filebeat-staging-*
