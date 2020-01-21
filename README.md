@@ -18,6 +18,7 @@ clair-scanner secureimages/filebeat-oss:7.5.1-alpine-3.11.3
 
 Security scanning using Trivy
 ```
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.4.2 --no-progress secureimages/filebeat-oss:7.5.1-alpine-3.11.3
 2020-01-20T21:48:29.756Z        INFO    Need to update DB
 2020-01-20T21:48:29.756Z        INFO    Downloading DB...
 2020-01-20T21:48:33.682Z        INFO    Reopening DB...
