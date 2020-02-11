@@ -6,25 +6,25 @@ Filebeat OSS, image is based on the Alpine base image with 0 vulnerabilities.
 
 Security scanning using Clair
 ```
-clair-scanner secureimages/filebeat-oss:7.5.2-alpine-3.11.3
-2020/01/25 17:08:44 [INFO] ▶ Start clair-scanner
-2020/01/25 17:08:45 [INFO] ▶ Server listening on port 9279
-2020/01/25 17:08:45 [INFO] ▶ Analyzing c60e0e5e0b8cce2c353f5af4186afb2cde56680bc78ff165fd2368a003530178
-2020/01/25 17:08:45 [INFO] ▶ Analyzing ca1e5a2b4258a1e7dc8e696f00a5e325df49355edc7072b5fa6192e611de468f
-2020/01/25 17:08:45 [INFO] ▶ Analyzing be682e75a223066c1f3fd149de541ffbe98ea3d3c2bb8212ad9ad2eee4ce3b90
-2020/01/25 17:08:45 [INFO] ▶ Analyzing d1b6de21c1c665cdcf15b65cae6c237e89753ae82a210ddef346618a15cc4f95
-2020/01/25 17:08:45 [INFO] ▶ Image [secureimages/filebeat-oss:7.5.2-alpine-3.11.3] contains NO unapproved vulnerabilities
+clair-scanner secureimages/filebeat-oss:7.6.0-alpine-3.11.3
+2020/02/11 20:48:46 [INFO] ▶ Start clair-scanner
+2020/02/11 20:48:47 [INFO] ▶ Server listening on port 9279
+2020/02/11 20:48:47 [INFO] ▶ Analyzing c60e0e5e0b8cce2c353f5af4186afb2cde56680bc78ff165fd2368a003530178
+2020/02/11 20:48:47 [INFO] ▶ Analyzing 987fc02970734620a3611fb8e2f5d328cb903b53a8beae9f72a660452f0fd98f
+2020/02/11 20:48:47 [INFO] ▶ Analyzing fb9472fac2163c41f308710524925dadff2af43fda79d4752000e129101ee497
+2020/02/11 20:48:47 [INFO] ▶ Analyzing d8a52f4866bc4b9fe6b7cdf56b2a4813182868ee775690d2777a15ca741da2cd
+2020/02/11 20:48:47 [INFO] ▶ Image [secureimages/filebeat-oss:7.6.0-alpine-3.11.3] contains NO unapproved vulnerabilities
 ```
 
 Security scanning using Trivy
 ```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.4.3 --no-progress secureimages/filebeat-oss:7.5.2-alpine-3.11.3
-2020-01-25T15:08:52.363Z        INFO    Need to update DB
-2020-01-25T15:08:52.363Z        INFO    Downloading DB...
-2020-01-25T15:08:56.354Z        INFO    Reopening DB...
-2020-01-25T15:08:57.670Z        INFO    Detecting Alpine vulnerabilities...
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.4.3 --no-progress secureimages/filebeat-oss:7.6.0-alpine-3.11.3
+2020-02-11T18:48:54.660Z        INFO    Need to update DB
+2020-02-11T18:48:54.660Z        INFO    Downloading DB...
+2020-02-11T18:48:58.158Z        INFO    Reopening DB...
+2020-02-11T18:49:01.110Z        INFO    Detecting Alpine vulnerabilities...
 
-secureimages/filebeat-oss:7.5.2-alpine-3.11.3 (alpine 3.11.3)
+secureimages/filebeat-oss:7.6.0-alpine-3.11.3 (alpine 3.11.3)
 =============================================================
 Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
 ```
@@ -33,34 +33,34 @@ Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
 
 [https://www.docker.elastic.co/](https://www.docker.elastic.co/)
 ```
-docker pull docker.elastic.co/beats/filebeat-oss:7.5.2
+docker pull docker.elastic.co/beats/filebeat-oss:7.6.0
 ```
 
 Security scanning using Clair
 ```
-clair-scanner docker.elastic.co/beats/filebeat-oss:7.5.2
-2020/01/25 17:09:02 [INFO] ▶ Start clair-scanner
-2020/01/25 17:09:07 [INFO] ▶ Server listening on port 9279
-2020/01/25 17:09:07 [INFO] ▶ Analyzing efabb8e7a64ff0670af40775b5aa02a8e19f73baa9f9e24aef8ce37a563f632d
-2020/01/25 17:09:07 [INFO] ▶ Analyzing 45e694e1405a213fb109efe7e31f755f84b15c94f6bb4355340f39bc9d26e4f8
-2020/01/25 17:09:07 [INFO] ▶ Analyzing 776865c8bd2473f25fefc107aa1354a50352c706cd9843c46f6677c984e93351
-2020/01/25 17:09:07 [INFO] ▶ Analyzing 86015ebdcb6f8cc778642a8911148b011f977453fc573e71a5a877da7f887a60
-2020/01/25 17:09:07 [INFO] ▶ Analyzing 6be4c714821411ab1589f23872fe7664e60267a4f3e833b49d0b389299e0d572
-2020/01/25 17:09:07 [INFO] ▶ Analyzing c1b554965b6d5e8da1b0d60772bc6ccf381596014fb7978b8ed717da307fcde7
-2020/01/25 17:09:07 [INFO] ▶ Analyzing 3b74c440ffd3a26b7423a3cfe4686a31947140850a850abdbba0700eb45e4a64
-2020/01/25 17:09:07 [WARN] ▶ Image [docker.elastic.co/beats/filebeat-oss:7.5.2] contains 6 total vulnerabilities
-2020/01/25 17:09:07 [ERRO] ▶ Image [docker.elastic.co/beats/filebeat-oss:7.5.2] contains 6 unapproved vulnerabilities
+clair-scanner docker.elastic.co/beats/filebeat-oss:7.6.0
+2020/02/11 20:49:05 [INFO] ▶ Start clair-scanner
+2020/02/11 20:49:10 [INFO] ▶ Server listening on port 9279
+2020/02/11 20:49:10 [INFO] ▶ Analyzing efabb8e7a64ff0670af40775b5aa02a8e19f73baa9f9e24aef8ce37a563f632d
+2020/02/11 20:49:10 [INFO] ▶ Analyzing e0c2a0724369ca08c9f0a4c3debec93c2408b7d3b1a3aa3a7878748b8be887bb
+2020/02/11 20:49:10 [INFO] ▶ Analyzing 66e3c7bb7cf27e42fc252233d240d17577af730dc3be8b1c9860b3c34eebc4a2
+2020/02/11 20:49:10 [INFO] ▶ Analyzing 668f6b5560a720890097f46abd7d1965f93a541986c13163013b77feee63e74c
+2020/02/11 20:49:10 [INFO] ▶ Analyzing 0b534dba34bce13dac4f89f7cf6434996fb6bc11e748dd954753f69c57adac6d
+2020/02/11 20:49:10 [INFO] ▶ Analyzing 40deca4b5453f26d3f72570b6419dc1c6d7feaa8ac3714834379233b8950d0d2
+2020/02/11 20:49:10 [INFO] ▶ Analyzing b249c9761c63fb01df9ffeb9861b980bdc2a889d9ba32a3c7c1db6ef1f5b129c
+2020/02/11 20:49:10 [WARN] ▶ Image [docker.elastic.co/beats/filebeat-oss:7.6.0] contains 7 total vulnerabilities
+2020/02/11 20:49:10 [ERRO] ▶ Image [docker.elastic.co/beats/filebeat-oss:7.6.0] contains 7 unapproved vulnerabilities
 ```
 
 Security scanning using Trivy
 ```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.4.3 --no-progress docker.elastic.co/beats/filebeat-oss:7.5.2
-2020-01-25T15:09:14.555Z        INFO    Need to update DB
-2020-01-25T15:09:14.555Z        INFO    Downloading DB...
-2020-01-25T15:09:18.001Z        INFO    Reopening DB...
-2020-01-25T15:09:23.587Z        INFO    Detecting RHEL/CentOS vulnerabilities...
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.4.3 --no-progress docker.elastic.co/beats/filebeat-oss:7.6.0
+2020-02-11T18:49:13.675Z        INFO    Need to update DB
+2020-02-11T18:49:13.675Z        INFO    Downloading DB...
+2020-02-11T18:49:18.728Z        INFO    Reopening DB...
+2020-02-11T18:49:25.543Z        INFO    Detecting RHEL/CentOS vulnerabilities...
 
-docker.elastic.co/beats/filebeat-oss:7.5.2 (centos 7.7.1908)
+docker.elastic.co/beats/filebeat-oss:7.6.0 (centos 7.7.1908)
 ============================================================
-Total: 637 (UNKNOWN: 0, LOW: 61, MEDIUM: 468, HIGH: 103, CRITICAL: 5)
+Total: 626 (UNKNOWN: 0, LOW: 59, MEDIUM: 461, HIGH: 103, CRITICAL: 3)
 ```
