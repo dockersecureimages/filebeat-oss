@@ -3,10 +3,10 @@ LABEL website="Secure Docker Images https://secureimages.dev"
 LABEL description="We secure your business from scratch."
 LABEL maintainer="hireus@secureimages.dev"
 
-ARG FILEBEAT_VERSION=7.6.1
+ARG FILEBEAT_VERSION=7.6.2
 ARG TARBALL_ASC="https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-${FILEBEAT_VERSION}-linux-x86_64.tar.gz.asc"
-### https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.6.1-linux-x86_64.tar.gz.sha512
-ARG TARBALL_SHA="535963e1029a0fcd68c7292d903c2884bf91921a89a6844fbdc4526660635670e877b1358bcc97bb47cd3ec9f7d4ac624f9587a68b58cdad325840c3a28929fe"
+### https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.6.2-linux-x86_64.tar.gz.sha512
+ARG TARBALL_SHA="836ffdee18f2fe3dfb4d806da89c0e69a908ed3d29bff326ec17d7d99e99a8424d2d44647a08618fe05e38ad5e26b17373fe34bbd4e2458de7b4b1f831247d51"
 ARG GPG_KEY="46095ACC8548582C1A2699A9D27D666CD88E42B4"
 
 ENV PATH $PATH:/usr/share/filebeat
