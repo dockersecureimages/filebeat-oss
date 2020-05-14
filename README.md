@@ -2,63 +2,63 @@
 
 Filebeat OSS, image is based on the Alpine base image with 0 vulnerabilities.
 
-## Current Docker image (~68.4MB)
+## Current Docker image (~66.5MB)
 
 Security scanning using Clair
 ```
-clair-scanner secureimages/filebeat-oss:7.6.2-alpine-3.11.6
-2020/04/25 12:32:11 [INFO] ▶ Start clair-scanner
-2020/04/25 12:32:11 [INFO] ▶ Server listening on port 9279
-2020/04/25 12:32:11 [INFO] ▶ Analyzing a5304328ea0f44bd1ac8bb5416ad6b7cc3b747ac232c6af66d7d9f12e9854344
-2020/04/25 12:32:11 [INFO] ▶ Analyzing b4162187aba9671e69b53d8100c5bbdf0d6b5a0d75bdf6995814fc8d68c88e79
-2020/04/25 12:32:11 [INFO] ▶ Analyzing 8bff0c67cb51098e37eb6e2e642fcd7b19a01cb8846a42280b6312b2de76fea0
-2020/04/25 12:32:11 [INFO] ▶ Analyzing 356d8f4022fe2a473a33e24b638c5c4e6ee9c54cf8e6b19e7c384eafa3827cfd
-2020/04/25 12:32:11 [INFO] ▶ Image [secureimages/filebeat-oss:7.6.2-alpine-3.11.6] contains NO unapproved vulnerabilities
+clair-scanner secureimages/filebeat-oss:7.7.0-alpine-3.11.6
+2020/05/14 12:06:41 [INFO] ▶ Start clair-scanner
+2020/05/14 12:06:42 [INFO] ▶ Server listening on port 9279
+2020/05/14 12:06:42 [INFO] ▶ Analyzing a5304328ea0f44bd1ac8bb5416ad6b7cc3b747ac232c6af66d7d9f12e9854344
+2020/05/14 12:06:42 [INFO] ▶ Analyzing baa19d7c9128ae3692df61c4df2330fe1213ab6d2de938c0f2641a782398e944
+2020/05/14 12:06:42 [INFO] ▶ Analyzing 0df4761f24ad4e9e0bcf2f231b5de1b8066bbe62b51d048c741cbabde6453fc3
+2020/05/14 12:06:42 [INFO] ▶ Analyzing f6309ddfe8d6624fa020a642cca15e5c619b2e87eda9a5c92b40472791d2aca6
+2020/05/14 12:06:42 [INFO] ▶ Image [secureimages/filebeat-oss:7.7.0-alpine-3.11.6] contains NO unapproved vulnerabilities
 ```
 
 Security scanning using Trivy
 ```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.6.0 --no-progress secureimages/filebeat-oss:7.6.2-alpine-3.11.6
-2020-04-25T09:32:18.213Z        INFO    Need to update DB
-2020-04-25T09:32:18.213Z        INFO    Downloading DB...
-2020-04-25T09:32:23.741Z        INFO    Detecting Alpine vulnerabilities...
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.7.0 --no-progress secureimages/filebeat-oss:7.7.0-alpine-3.11.6
+2020-05-14T09:06:47.701Z        INFO    Need to update DB
+2020-05-14T09:06:47.701Z        INFO    Downloading DB...
+2020-05-14T09:06:52.997Z        INFO    Detecting Alpine vulnerabilities...
 
-secureimages/filebeat-oss:7.6.2-alpine-3.11.6 (alpine 3.11.6)
+secureimages/filebeat-oss:7.7.0-alpine-3.11.6 (alpine 3.11.6)
 =============================================================
 Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
 ```
 
-## Official Docker image (~322MB)
+## Official Docker image (~343MB)
 
 [https://www.docker.elastic.co/](https://www.docker.elastic.co/)
 ```
-docker pull docker.elastic.co/beats/filebeat-oss:7.6.2
+docker pull docker.elastic.co/beats/filebeat-oss:7.7.0
 ```
 
 Security scanning using Clair
 ```
-clair-scanner docker.elastic.co/beats/filebeat-oss:7.6.2
-2020/04/25 12:32:29 [INFO] ▶ Start clair-scanner
-2020/04/25 12:32:33 [INFO] ▶ Server listening on port 9279
-2020/04/25 12:32:33 [INFO] ▶ Analyzing efabb8e7a64ff0670af40775b5aa02a8e19f73baa9f9e24aef8ce37a563f632d
-2020/04/25 12:32:33 [INFO] ▶ Analyzing 7f9998b6d0ff8c4bea29df0d96f81ea1d58a442ba97cf8f30be4f6f339cc2d8f
-2020/04/25 12:32:33 [INFO] ▶ Analyzing c4012a3c8ccb98e88c98bdf8a6052d8a90f7a42ae2487a5b6ff3679f149e9df6
-2020/04/25 12:32:33 [INFO] ▶ Analyzing 21f46c61ada72b60aaa07a7930310f84b0e123c2144d58b99af8ea70d14b1f1f
-2020/04/25 12:32:33 [INFO] ▶ Analyzing c5215aed5d633cfa035ff3e167dc26f97e4199b853a225a3da49e1169eaa5552
-2020/04/25 12:32:33 [INFO] ▶ Analyzing c28b54e46bd624d746f6e1fcf6d2a659c91ffea3d93ccef16e14cfa63897dd8d
-2020/04/25 12:32:33 [INFO] ▶ Analyzing b7a3edd3ad6ac2fd11b73677240e25dd875995664a43a6350f2fd2088ebad0ae
-2020/04/25 12:32:33 [WARN] ▶ Image [docker.elastic.co/beats/filebeat-oss:7.6.2] contains 18 total vulnerabilities
-2020/04/25 12:32:33 [ERRO] ▶ Image [docker.elastic.co/beats/filebeat-oss:7.6.2] contains 18 unapproved vulnerabilities
+clair-scanner docker.elastic.co/beats/filebeat-oss:7.7.0
+2020/05/14 12:06:57 [INFO] ▶ Start clair-scanner
+2020/05/14 12:07:03 [INFO] ▶ Server listening on port 9279
+2020/05/14 12:07:03 [INFO] ▶ Analyzing c53e4ebe5d0a558645655ec8b3e667ed7cae98e3252a08914c1ab5a08cef4da0
+2020/05/14 12:07:03 [INFO] ▶ Analyzing 7ee8489d6b75b80f4437379dd7311da314dd7b6228d1fda662e434ec4df65ad7
+2020/05/14 12:07:03 [INFO] ▶ Analyzing d24e0d7d423958d362ba9a588e2c2e143baf8cc765eb4e3cf9689b0ecdd2a5d1
+2020/05/14 12:07:03 [INFO] ▶ Analyzing bde264151ec17dbc5e12dd4cefa5d09ae2d83a331d3125d814d1bca1dc14eee9
+2020/05/14 12:07:03 [INFO] ▶ Analyzing 720fcdd3d50d858b3d884af9e88fb392abddbdef2a7ed68ac266f5729bde8ed9
+2020/05/14 12:07:03 [INFO] ▶ Analyzing d80a8ce82e6c017076e217dfce9384db120fc8f13a09115dc3248657100247d2
+2020/05/14 12:07:03 [INFO] ▶ Analyzing bf9804718d3cd04c0ad921825eddf3dc7848f708112a2082dc79c8e3268048db
+2020/05/14 12:07:03 [INFO] ▶ Analyzing 758fc243c7fa69934dd651705da30437af22a59901a5c98240c2abca1bb10474
+2020/05/14 12:07:03 [INFO] ▶ Image [docker.elastic.co/beats/filebeat-oss:7.7.0] contains NO unapproved vulnerabilities
 ```
 
 Security scanning using Trivy
 ```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.6.0 --no-progress docker.elastic.co/beats/filebeat-oss:7.6.2
-2020-04-25T09:32:37.950Z        INFO    Need to update DB
-2020-04-25T09:32:37.950Z        INFO    Downloading DB...
-2020-04-25T09:32:47.748Z        INFO    Detecting RHEL/CentOS vulnerabilities...
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.7.0 --no-progress docker.elastic.co/beats/filebeat-oss:7.7.0
+2020-05-14T09:07:05.465Z        INFO    Need to update DB
+2020-05-14T09:07:05.465Z        INFO    Downloading DB...
+2020-05-14T09:07:15.550Z        INFO    Detecting RHEL/CentOS vulnerabilities...
 
-docker.elastic.co/beats/filebeat-oss:7.6.2 (centos 7.7.1908)
+docker.elastic.co/beats/filebeat-oss:7.7.0 (centos 7.8.2003)
 ============================================================
-Total: 638 (UNKNOWN: 0, LOW: 62, MEDIUM: 467, HIGH: 106, CRITICAL: 3)
+Total: 600 (UNKNOWN: 0, LOW: 361, MEDIUM: 234, HIGH: 5, CRITICAL: 0)
 ```
